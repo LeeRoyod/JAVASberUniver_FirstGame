@@ -12,7 +12,7 @@ public class Main {
     }
     public static void craftBook() {
         System.out.println("Книга рецептов (Recipe Book):");
-        System.out.println("Два железных слитка + Палка = Железный меч");
+        System.out.println("Железный слиток + Палка = Железный меч");
     }
 
 
@@ -37,7 +37,7 @@ public class Main {
         hall.directions.put(Direction.LEFT, workshop);
         hall.directions.put(Direction.FORWARD, battle);
         workshop.description = "Нужно срочно что-нибудь придумать что бы спасти Селку. Вы забегаете за угол и попадаете в древнюю мастерскую";
-        workshop.inspection = "Неподалеку находится верстак и кузнечный инвентарий, опыт 2000 часов в майнкрафт дают о себе знать...";
+        workshop.inspection = "Неподалеку находится верстак и кузнечный инвентарий, опыт 2000 часов в майнкрафт дают о себе знать и у вас закрадываются идеи...";
         workshop.directions.put(Direction.BACK, hall);
         battle.description = "Вы нападаете на гоблинов и раскрамсываете их своим железным мечем";
         battle.inspection = "Гоблины побеждены и Селке более ничего не угрожает";
@@ -108,8 +108,8 @@ public class Main {
                     System.out.println(player.location.inspection);
                     System.out.print("Предметы на локации: ");
                     try {
-                        String TestInv = player.location.inventoryGetList();
-                        if (TestInv.equals("[Предметов нет]")) {
+                        String TestInvLoc = player.location.inventoryGetList();
+                        if (TestInvLoc.equals("[Предметов нет]")) {
                             break;
                         }
                     } catch (StringIndexOutOfBoundsException | NullPointerException e) {
@@ -210,6 +210,10 @@ public class Main {
                 case ("INVENT"):
                     System.out.print("У вас в инвентаре: ");
                     try {
+                        String TestInv = player.inventory.inventoryGetList();
+                        if (TestInv.equals("[Предметов нет]")) {
+                            break;
+                        }
                         player.inventory.inventoryGetList();
                     } catch (StringIndexOutOfBoundsException | NullPointerException e) {
                         System.out.println("[Предметов нет]");
@@ -284,7 +288,7 @@ public class Main {
                                 craftBook();
                                 System.out.print("Ваш инвентарь: ");
                                 player.inventory.inventoryGetList();
-                                if (player.inventory.items.contains(iron) || player.inventory.items.contains(stick)) {
+                                if (player.inventory.items.contains(iron) && player.inventory.items.contains(stick)) {
                                     System.out.println("Введите имя первого предмета для крафта");
                                     Scanner craftOne1 = new Scanner(System.in);
                                     String craftOne = craftOne1.next();

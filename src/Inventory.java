@@ -14,7 +14,7 @@ public class Inventory {
     }
 
 
-    public void inventoryGetList() {
+    public String inventoryGetList() {
         try {
             String inventoryGetList = "[";
             for (Item o : items) {
@@ -22,8 +22,13 @@ public class Inventory {
             }
             System.out.println(inventoryGetList.substring(0, inventoryGetList.length() - 2) + "]");
         }
+
         catch (StringIndexOutOfBoundsException | NullPointerException e) {
-            System.out.println("[Предметов нет]"); }
+            System.out.println("[Предметов нет]");
+            String nullInv = "[Предметов нет]";
+            return nullInv; }
+        String nullInv = "Good";
+        return nullInv;
     }
 
 
