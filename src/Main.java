@@ -214,7 +214,6 @@ public class Main {
                         if (TestInv.equals("[Предметов нет]")) {
                             break;
                         }
-                        player.inventory.inventoryGetList();
                     } catch (StringIndexOutOfBoundsException | NullPointerException e) {
                         System.out.println("[Предметов нет]");
                         break;
