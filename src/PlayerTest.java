@@ -18,6 +18,11 @@ public class PlayerTest {
         Assert.assertFalse(result);
     }
     @Test
+    public void containsSmall() {
+        boolean result = Player.contains("forward");
+        Assert.assertFalse(result);
+    }
+    @Test
     public void containsUP() {
         boolean result = Player.contains("UP");
         Assert.assertTrue(result);
